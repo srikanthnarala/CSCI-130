@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
-
+import "fmt"	//PROJECT EULER PROBLEM
+		//FINDING DIFFERENCE BETWEEN (SUM OF SQUARES FROM 1 TO 10) AND (SQUARE OF SUM OF 1 TO 10) NUMBERS
 func main() {
 
 	var total = 0	//total is sum of squares from 1 to 10 numbers
