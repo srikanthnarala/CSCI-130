@@ -1,18 +1,17 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
-	"strings"
+	"io"
 )
 
-func serve_the_webpage(res http.ResponseWriter, req *http.Request) {
-	fs := strings.Split(req.URL.Path, "/")
-	fmt.Fprint(res, fs[1])
-}
+func main(){
+	http.Handle("/favicon.ico",http.NotFoundHandler())
+	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request){
+		key := "q"
+		val := req.FormValue(key)
+		io.WriteString(res, "Query String - Name :"+val)
+	})
 
-func main() {
-	http.HandleFunc("/", serve_the_webpage)
-
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8080",nil)
 }
